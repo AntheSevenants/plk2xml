@@ -1,8 +1,7 @@
 from xml.etree.ElementTree import Element, SubElement, tostring
-from xml.etree import ElementTree
 from xml.dom import minidom
 
-def plk2xml(plk):
+def plk2xml(plk, indent=True):
 	root = Element('plk')
 
 	for separator in plk.data:
@@ -77,5 +76,12 @@ def plk2xml(plk):
 			i += 1
 
 
+	out = tostring(root, "UTF-8").decode("UTF-8")
+	if indent:
+		return prettify(out)
+	else:
+		return out
 
-	return tostring(root, "UTF-8").decode("UTF-8")
+def prettify(xml_string):
+	dom = minidom.parseString(xml_string)
+	return dom.toprettyxml()
