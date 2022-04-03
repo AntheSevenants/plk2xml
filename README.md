@@ -100,7 +100,7 @@ from plk2xml.plk import plk
 from plk2xml.plk2json import plk2json
 
 plk_file = plk("fn000131.plk")
-output = plk2json(plk_file, indent=4)
+json = plk2json(plk_file, indent=4)
 ``` 
 
 You can supply a custom indentation by passing the number of indentation spaces as the `indent` argument. To disable indentation, set `indent=None`
