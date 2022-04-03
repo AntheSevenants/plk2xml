@@ -11,6 +11,7 @@ if len(sys.argv) < 3:
 plk_file = plk(sys.argv[1])
 
 out_filename, out_extension = os.path.splitext(sys.argv[2])
+out_extension = out_extension.lower()
 
 if out_extension == ".xml":
 	output = plk2xml(plk_file)
