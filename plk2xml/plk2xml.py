@@ -18,10 +18,10 @@ def plk2xml(plk, indent=True):
 			separator_element.set(key, separator[key])
 
 		# Now, create token children for all tokens under this separator
-		i = 1 # All other documentation is 1-based... so I thought I'd just follow
-		for token in separator["tokens"]:
+		for i, token in enumerate(separator["tokens"]):
 			token_element = SubElement(separator_element, "token")
-			token_element.set("id", str(i))
+			# All other documentation is 1-based... so I thought I'd just follow
+			token_element.set("id", str(i + 1))
 
 			# Again, create children for the different token attributes
 			for key in token:
@@ -62,8 +62,7 @@ def plk2xml(plk, indent=True):
 
 				# Add all corresponding indices
 				lemmata_indices_element = SubElement(complex_element, 'indices')
-				j = 0
-				for lemma_indices in token["lemmata_complex_indices"]:
+				for j, lemma_indices in enumerate(token["lemmata_complex_indices"]):
 					lemma_element = SubElement(lemmata_indices_element, "lemma")
 					lemma_element.set("form", token["lemmata_complex"][j])
 
