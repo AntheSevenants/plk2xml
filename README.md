@@ -105,6 +105,201 @@ output = plk2json(plk_file, indent=4)
 
 You can supply a custom indentation by passing the number of indentation spaces as the `indent` argument. To disable indentation, set `indent=None`
 
+## Example output
+
+These examples are snippets and do not represent the full output.
+
+### XML
+
+```xml
+<?xml version="1.0" ?>
+<plk>
+	<au id="53" s="N00163" tb="134.849">
+		<token id="1">
+			<form>mijn</form>
+			<pos>VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)</pos>
+			<lemma>mijn</lemma>
+			<form_ids>
+				<id>620111</id>
+			</form_ids>
+			<lemma_ids>
+				<id>135182</id>
+			</lemma_ids>
+		</token>
+		<token id="2">
+			<form>directeur</form>
+			<pos>N(soort,ev,basis,zijd,stan)</pos>
+			<lemma>directeur</lemma>
+			<form_ids>
+				<id>69422</id>
+			</form_ids>
+			<lemma_ids>
+				<id>22728</id>
+			</lemma_ids>
+		</token>
+		<token id="3">
+			<form>prees</form>
+			<pos>WW(pv,verl,ev)</pos>
+			<lemma>prijzen</lemma>
+			<form_ids>
+				<id>243874</id>
+			</form_ids>
+			<lemma_ids>
+				<id>80725</id>
+			</lemma_ids>
+			<complex>
+				<lemmata>
+					<lemma>aanprijzen</lemma>
+				</lemmata>
+				<lemmata_ids>
+					<id>500214</id>
+				</lemmata_ids>
+				<indices>
+					<lemma form="aanprijzen">
+						<index>3</index>
+						<index>5</index>
+					</lemma>
+				</indices>
+			</complex>
+		</token>
+		<token id="4">
+			<form>dat</form>
+			<pos>VNW(aanw,pron,stan,vol,3o,ev)</pos>
+			<lemma>dat</lemma>
+			<form_ids>
+				<id>619602</id>
+			</form_ids>
+			<lemma_ids>
+				<id>134794</id>
+			</lemma_ids>
+		</token>
+		<token id="5">
+			<form>aan</form>
+			<pos>VZ(fin)</pos>
+			<lemma>aan</lemma>
+			<form_ids>
+				<id>619352</id>
+			</form_ids>
+			<lemma_ids>
+				<id>134606</id>
+			</lemma_ids>
+			<complex>
+				<lemmata>
+					<lemma>aanprijzen</lemma>
+				</lemmata>
+				<lemmata_ids>
+					<id>500214</id>
+				</lemmata_ids>
+				<indices>
+					<lemma form="aanprijzen">
+						<index>3</index>
+						<index>5</index>
+					</lemma>
+				</indices>
+			</complex>
+		</token>
+		<token id="6">
+			<form>.</form>
+			<pos>LET()</pos>
+			<lemma>.</lemma>
+			<form_ids>
+				<id>0</id>
+			</form_ids>
+			<lemma_ids>
+				<id>0</id>
+			</lemma_ids>
+		</token>
+	</au>
+</plk>
+```
+
+### JSON
+
+```json
+[
+    {
+        "type": "au",
+        "id": "53",
+        "s": "N00163",
+        "tb": "134.849",
+        "tokens": [
+            {
+                "form": "mijn",
+                "pos": "VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)",
+                "lemma": "mijn",
+                "form_id": "620111",
+                "lemma_id": "135182",
+                "complex": false
+            },
+            {
+                "form": "directeur",
+                "pos": "N(soort,ev,basis,zijd,stan)",
+                "lemma": "directeur",
+                "form_id": "69422",
+                "lemma_id": "22728",
+                "complex": false
+            },
+            {
+                "form": "prees",
+                "pos": "WW(pv,verl,ev)",
+                "lemma": "prijzen",
+                "form_id": "243874",
+                "lemma_id": "80725",
+                "complex": true,
+                "lemmata_complex": [
+                    "aanprijzen"
+                ],
+                "lemmata_complex_ids": [
+                    "500214"
+                ],
+                "lemmata_complex_indices": [
+                    [
+                        "3",
+                        "5"
+                    ]
+                ]
+            },
+            {
+                "form": "dat",
+                "pos": "VNW(aanw,pron,stan,vol,3o,ev)",
+                "lemma": "dat",
+                "form_id": "619602",
+                "lemma_id": "134794",
+                "complex": false
+            },
+            {
+                "form": "aan",
+                "pos": "VZ(fin)",
+                "lemma": "aan",
+                "form_id": "619352",
+                "lemma_id": "134606",
+                "complex": true,
+                "lemmata_complex": [
+                    "aanprijzen"
+                ],
+                "lemmata_complex_ids": [
+                    "500214"
+                ],
+                "lemmata_complex_indices": [
+                    [
+                        "3",
+                        "5"
+                    ]
+                ]
+            },
+            {
+                "form": ".",
+                "pos": "LET()",
+                "lemma": ".",
+                "form_id": "0",
+                "lemma_id": "0",
+                "complex": false
+            }
+        ]
+    }
+]
+```
+
 ## Future work
 
 - find a faster XML indentation process
