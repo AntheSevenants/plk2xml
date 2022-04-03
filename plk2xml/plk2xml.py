@@ -70,11 +70,6 @@ def plk2xml(plk, indent=True):
 						lemma_index_element = SubElement(lemma_element, "index")
 						lemma_index_element.text = lemma_index
 
-					j += 1
-
-			i += 1
-
-
 	out = tostring(root, "UTF-8").decode("UTF-8")
 	if indent:
 		return prettify(out)
